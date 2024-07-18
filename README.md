@@ -1,5 +1,5 @@
 # Bypass-Linux-Restrictions
-# Common Limitations Bypasses
+## Common Limitations Bypasses
 
 # Reverse Shell
 ```
